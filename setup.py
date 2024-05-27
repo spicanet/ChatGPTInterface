@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chatgpt_interface',
-    version='0.1.1',
+    version='0.1.2',
     packages=find_packages(),
     install_requires=[
         'selenium',
@@ -13,7 +13,7 @@ setup(
     description='A Python interface for interacting with ChatGPT via web interface using Selenium',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/spicanet/chatgpt_interface',
+    url='https://github.com/spicanet/ChatGPTInterface',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
