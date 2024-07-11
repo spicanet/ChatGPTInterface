@@ -1,9 +1,13 @@
 from chatgpt_interface import ChatGPTInterface
 
 if __name__ == "__main__":
-    profile_path = "D:/Projects/SpicaNet/Dev/ChatGPTInterface/profiles/Profile1"
-    chat_url = "https://chat.openai.com/"
-    prompts = ["Write article\nabout\nChocolate", "Write FAQ\nfor this article", "Write meta description for this article"]
+
+    profile_path = "D:/Projects/SpicaNet/Dev/Chrome/profiles/Profile1"
+
+    chat_url = "https://chatgpt.com/"
+
+    prompts = ["Write article about Chocolate", "Write FAQ for this article", "Write meta description for this article"]
+
     output_file = "responses.txt"
 
     chatgpt = ChatGPTInterface(profile_path, chat_url, prompts)

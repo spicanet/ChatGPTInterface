@@ -16,7 +16,7 @@ class ChatGPTInterface:
         self.prompts = prompts
 
         if not os.path.exists(self.profile_path):
-            raise FileNotFoundError(f"Profile directory does not exist at {self.profile_path}")
+            os.makedirs(self.profile_path)
 
         chrome_options = Options()
         chrome_options.add_argument(f"user-data-dir={self.profile_path}")
@@ -84,6 +84,7 @@ class ChatGPTInterface:
             chat_input_box.send_keys(Keys.SHIFT, Keys.ENTER)
         
         chat_input_box.send_keys(Keys.RETURN)
+        chat_input_box.submit()
         time.sleep(2)
 
     def get_response(self):
