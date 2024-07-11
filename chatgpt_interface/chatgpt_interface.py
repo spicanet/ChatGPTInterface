@@ -20,36 +20,15 @@ class ChatGPTInterface:
 
         chrome_options = Options()
         chrome_options.add_argument(f"user-data-dir={self.profile_path}")
-        chrome_options.add_argument("--disable-extensions")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--lang=en-US")
-        chrome_options.add_argument("--ignore-certificate-errors")
-        chrome_options.add_argument("--allow-running-insecure-content")
-        chrome_options.add_argument("--auto-open-devtools-for-tabs")
-        chrome_options.add_argument("--window-size=1920,1080")
-        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36")
-        chrome_options.add_argument("--disable-infobars")
-        chrome_options.add_argument("--disable-notifications")
-        chrome_options.add_argument("--disable-popup-blocking")
-        chrome_options.add_argument("--start-maximized")
-        chrome_options.add_argument("--disable-web-security")
-        chrome_options.add_argument("--allow-running-insecure-content")
-        chrome_options.add_argument("--disable-features=IsolateOrigins,site-per-process")
-        # chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--mute-audio")
-        chrome_options.add_argument("--disable-logging")
-        chrome_options.add_argument("--log-level=3")
-
-        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        chrome_options.add_experimental_option('useAutomationExtension', False)
-        chrome_options.add_experimental_option("prefs", {
-            "profile.default_content_setting_values.notifications": 1,
-            "credentials_enable_service": False,
-            "profile.password_manager_enabled": False
-        })
+        # chrome_options.add_argument("--start-maximized")
+        # chrome_options.add_argument("--disable-extensions")
+        # chrome_options.add_argument("--lang=en-US")
+        # chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        # chrome_options.add_experimental_option('useAutomationExtension', False)
+        # chrome_options.add_experimental_option("prefs", {
+        #     "credentials_enable_service": False,
+        #     "profile.password_manager_enabled": False
+        # })
 
         service = Service(ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -57,21 +36,13 @@ class ChatGPTInterface:
 
     def open_chat(self):
         self.driver.get(self.chat_url)
-        self.check_login_button()
-
-    def check_login_button(self):
-        try:
-            login_button = self.wait.until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "button[data-testid='login-button']"))
-            )
-            if login_button:
-                self.prompt_user_action("Login required. Perform login actions and press Enter to continue...")
-        except:
-            pass
+        self.prompt_user_action("Press 'y' after completing login or captcha to continue...")
 
     def prompt_user_action(self, message):
         print(message)
-        input()
+        while True:
+            if input().lower() == 'y':
+                break
 
     def send_prompt(self, prompt):
         chat_input_box = self.wait.until(
@@ -83,7 +54,7 @@ class ChatGPTInterface:
             chat_input_box.send_keys(line)
             chat_input_box.send_keys(Keys.SHIFT, Keys.ENTER)
         
-        chat_input_box.send_keys(Keys.RETURN)
+        # chat_input_box.send_keys(Keys.RETURN)
         chat_input_box.submit()
         time.sleep(2)
 
