@@ -20,15 +20,6 @@ class ChatGPTInterface:
 
         chrome_options = Options()
         chrome_options.add_argument(f"user-data-dir={self.profile_path}")
-        # chrome_options.add_argument("--start-maximized")
-        # chrome_options.add_argument("--disable-extensions")
-        # chrome_options.add_argument("--lang=en-US")
-        # chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        # chrome_options.add_experimental_option('useAutomationExtension', False)
-        # chrome_options.add_experimental_option("prefs", {
-        #     "credentials_enable_service": False,
-        #     "profile.password_manager_enabled": False
-        # })
 
         service = Service(ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=service, options=chrome_options)
