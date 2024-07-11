@@ -1,7 +1,7 @@
 from chatgpt_interface import ChatGPTInterface
 
 if __name__ == "__main__":
-    profile_path = "D:/Projects/SpicaNet/Dev/ChatGPTInterface/profiles/Profile1"
+    profile_path = "/var/www/spicanet/data/dev/Chrome/Default"
     chat_url = "https://chat.openai.com/"
     prompts = ["Write article\nabout\nChocolate", "Write FAQ\nfor this article", "Write meta description for this article"]
     output_file = "responses.txt"
