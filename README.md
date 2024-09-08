@@ -42,3 +42,5 @@ with open(output_file, 'w', encoding='utf-8') as file:
     for prompt, response in responses:
         file.write(f"Prompt: {prompt}\nResponse: {response}\n\n")
 ```
+
+The best proxies for any task: https://oneproxy.pro
