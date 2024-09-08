@@ -2,7 +2,7 @@ from chatgpt_interface import ChatGPTInterface
 
 if __name__ == "__main__":
 
-    profile_path = "D:/Projects/SpicaNet/Dev/Chrome/profiles/Profile1"
+    profile_path = "/home/spicanet/.config/google-chrome/"
 
     chat_url = "https://chatgpt.com/"
 
